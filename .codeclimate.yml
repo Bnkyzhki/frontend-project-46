@@ -1,0 +1,3 @@
+test_reporter:
+  exclude_paths:
+    - spec/
