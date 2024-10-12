@@ -15,16 +15,18 @@ export const compareFiles = (filepath1, filepath2) => {
 
   const result = allKeys.map((key) => {
     if (!(key in data2)) {
-      return `- ${key}: ${data1[key]}`;
+      return `  - ${key}: ${data1[key]}`; // Удалённый ключ с отступом
     }
     if (!(key in data1)) {
-      return `+ ${key}: ${data2[key]}`;
+      return `  + ${key}: ${data2[key]}`; // Новый ключ с отступом
     }
     if (data1[key] !== data2[key]) {
-      return `- ${key}: ${data1[key]}\n  + ${key}: ${data2[key]}`;
+      return `  - ${key}: ${data1[key]}\n  + ${key}: ${data2[key]}`; // Изменение значения с отступами
     }
-    return `${key}: ${data1[key]}`;
+    return `    ${key}: ${data1[key]}`; // Нет изменений с отступом
   });
+  
 
-  return `{\n${result.join('\n')}\n}`;
+  return `{\n${result.join('\n')}\n}`; // Возвращаем отформатированный вывод
 };
+
