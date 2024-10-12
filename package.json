@@ -18,6 +18,7 @@
   "devDependencies": {
     "@eslint/create-config": "^1.0.0",
     "@eslint/js": "^9.9.0",
+    "codeclimate-test-reporter": "^0.5.1",
     "eslint": "^8.57.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "globals": "^15.11.0",
