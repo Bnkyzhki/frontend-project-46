@@ -23,7 +23,7 @@ jobs:
 
     - name: Upload coverage to CodeClimate
       env:
-        CODECLIMATE_REPO_TOKEN: ${{ secrets.CC_TEST_REPORTER_ID }}
+        CODECLIMATE_REPO_TOKEN: ${{ secrets.CODECLIMATE_REPO_TOKEN }}
       run: |
         ./node_modules/.bin/codeclimate-test-reporter after-build --exit-code $?
 
