@@ -22,9 +22,12 @@ jobs:
       run: npm test -- --coverage
 
     - name: Upload coverage to CodeClimate
+      uses: codeclimate/test-reporter-action@v2.0.0
+      with:
+        coverageCommand: npm test -- --coverage
       env:
-        CODECLIMATE_REPO_TOKEN: ${{ secrets.CODECLIMATE_REPO_TOKEN }}
-      run: ./node_modules/.bin/codeclimate-test-reporter upload-coverage --input coverage/lcov.info
+        CC_TEST_REPORTER_ID: ${{ secrets.CODECLIMATE_REPO_TOKEN }}
+
 
 
 
