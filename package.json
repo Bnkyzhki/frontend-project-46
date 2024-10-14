@@ -13,15 +13,20 @@
     "gendiff": "./gendiff.js"
   },
   "dependencies": {
-    "commander": "^10.0.0",
-    "jest": "^29.5.0",
-    "js-yaml": "^4.1.0",
-    "lodash": "^4.17.21"
+    "commander": "^12.1.0"
   },
   "devDependencies": {
-    "eslint": "^8.40.0",
+    "@eslint/create-config": "^1.0.0",
+    "@eslint/js": "^9.9.0",
+    "codeclimate-test-reporter": "^0.5.1",
+    "eslint": "^8.57.0",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.27.5",
-    "eslint-plugin-jest": "^27.2.1"
-  }
+    "globals": "^15.11.0",
+    "jest": "^29.7.0"
+  },
+  "jest": {
+      "collectCoverage": true,
+      "coverageReporters": ["lcov", "text"],
+      "coverageDirectory": "coverage"
+    }
 }
