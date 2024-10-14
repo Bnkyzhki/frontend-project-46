@@ -18,18 +18,17 @@ jobs:
     - name: Install dependencies
       run: npm ci
 
-    - name: Install nyc
-      run: npm install nyc --save-dev
+    - name: Run tests with nyc to collect coverage
+      run: ./node_modules/.bin/nyc npm test
 
-    - name: Run tests with coverage
-      run: npm test -- --coverage
+    - name: Generate coverage report
+      run: ./node_modules/.bin/nyc report --reporter=lcov > coverage/lcov.info
 
     - name: Upload coverage to CodeClimate
       env:
         CODECLIMATE_REPO_TOKEN: ${{ secrets.CODECLIMATE_REPO_TOKEN }}
-      run: |
-        ./node_modules/.bin/nyc report --reporter=lcov > coverage/lcov.info
-        ./node_modules/.bin/codeclimate-test-reporter upload-coverage --input coverage/lcov.info
+      run: ./node_modules/.bin/codeclimate-test-reporter upload-coverage --input coverage/lcov.info
+
 
 
 
