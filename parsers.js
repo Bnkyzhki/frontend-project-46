@@ -18,3 +18,5 @@ export const parse = (filepath) => {
       throw new Error(`Unsupported file format: ${extension}`);
   }
 };
+
+export default parse;
