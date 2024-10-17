@@ -1,35 +1,16 @@
-name: Test Coverage
+            - name: setup-codeclimate
+  # You may pin to the exact commit or the version.
+  # uses: remarkablemark/setup-codeclimate@36a0875df5f219a50f616dc9166efadebfe3d56b
+  uses: remarkablemark/setup-codeclimate@v2.0.9
+  with:
+    # Code Climate test reporter version
+    codeclimate-version: # optional, default is latest
+    # Code Climate test reporter CLI name
+    cli-name: # optional, default is cc-test-reporter
+          
 
-on: [push, pull_request]
 
-jobs:
-  test:
-    runs-on: ubuntu-latest
 
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '20'
-
-    - name: Install dependencies
-      run: npm ci
-
-    - name: Install nyc
-      run: npm install nyc --save-dev
-
-    - name: Run tests with coverage
-      run: npm test -- --coverage
-
-    - name: Upload coverage to CodeClimate
-      env:
-        CODECLIMATE_REPO_TOKEN: ${{ secrets.CODECLIMATE_REPO_TOKEN }}
-      run: |
-        ./node_modules/.bin/nyc report --reporter=lcov > coverage/lcov.info
-        ./node_modules/.bin/codeclimate-test-reporter upload-coverage --input coverage/lcov.info
 
 
 
