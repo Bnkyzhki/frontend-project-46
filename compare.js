@@ -1,10 +1,11 @@
+import fs from 'fs';
+import path from 'path';
 import _ from 'lodash';
 import parse from './parsers.js';
-import stylish from './formatters/stylish.js';
+import getFormatter from './formatters/index.js';
 
 const buildDiff = (data1, data2) => {
   const keys = _.sortBy(_.union(Object.keys(data1), Object.keys(data2)));
-
   return keys.map((key) => {
     if (!_.has(data2, key)) {
       return { key, type: 'removed', value: data1[key] };
@@ -18,17 +19,17 @@ const buildDiff = (data1, data2) => {
       return { key, type: 'nested', children: buildDiff(value1, value2) };
     }
     if (!_.isEqual(value1, value2)) {
-      return {
-        key, type: 'changed', oldValue: value1, newValue: value2,
-      };
+      return { key, type: 'changed', oldValue: value1, newValue: value2 };
     }
     return { key, type: 'unchanged', value: value1 };
   });
 };
 
-export const compareFiles = (filepath1, filepath2) => {
+export const compareFiles = (filepath1, filepath2, format = 'stylish') => {
   const data1 = parse(filepath1);
   const data2 = parse(filepath2);
   const diff = buildDiff(data1, data2);
-  return stylish(diff);
+  const formatter = getFormatter(format);
+  return formatter(diff);
 };
+

@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 import { Command } from 'commander';
 import { compareFiles } from './compare.js';
-import stylish from './formatters/stylish.js';
 
 const program = new Command();
 
@@ -12,8 +11,7 @@ program
   .option('-f, --format [type]', 'output format', 'stylish')
   .arguments('<filepath1> <filepath2>')
   .action((filepath1, filepath2, options) => {
-    const format = options.format === 'stylish' ? stylish : stylish;
-    const diff = compareFiles(filepath1, filepath2, format);
+    const diff = compareFiles(filepath1, filepath2, options.format);
     console.log(diff);
   });
 
