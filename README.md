@@ -11,3 +11,5 @@
 Поддержка разных входных форматов: yaml, json
 Генерация отчета в виде plain text, stylish и json
 [![asciicast](https://asciinema.org/a/GpHkwNLbukM1D3qXn8mkxoUN6.svg)](https://asciinema.org/a/GpHkwNLbukM1D3qXn8mkxoUN6)
+[![asciicast](https://asciinema.org/a/wyLovzniNmAkx7fQVtyKfcVu3.svg)](https://asciinema.org/a/wyLovzniNmAkx7fQVtyKfcVu3)
+[![asciicast](https://asciinema.org/a/LqYVHS9w7XNbgBViTIkK2ltp5.svg)](https://asciinema.org/a/LqYVHS9w7XNbgBViTIkK2ltp5)
