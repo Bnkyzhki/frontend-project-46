@@ -24,5 +24,7 @@ program
       return option.description;
     }
   });
+  
+program.allowUnknownOption(true);
 
 program.parse();
