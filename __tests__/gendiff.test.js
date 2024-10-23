@@ -14,10 +14,7 @@ describe('gendiff', () => {
     const filePath1 = getFixturePath('file1.json');
     const filePath2 = getFixturePath('file2.json');
     const expectedOutput = readFile('expected_output_stylish.txt');
-
-    const normalizeWhitespace = (str) => str.replace(/\s+/g, ' ').trim();
-
     const result = compareFiles(filePath1, filePath2);
-    expect(normalizeWhitespace(result)).toEqual(normalizeWhitespace(expectedOutput));
+    expect((result)).toEqual((expectedOutput));
   });
 });

@@ -1,12 +1,15 @@
 const getIndent = (depth) => ' '.repeat(depth * 4 - 2);
-const getBracketIndent = (depth) => ' '.repeat((depth - 1) * 4 - 2);
+const getBracketIndent = (depth) => {
+  const indentSize = (depth - 1) * 4 - 2;
+  return indentSize > 0 ? ' '.repeat(indentSize) : '';
+};
 
 const stringify = (value, depth) => {
   if (typeof value !== 'object' || value === null) {
     return String(value);
   }
 
-  const indent = getIndent(depth + 1); 
+  const indent = getIndent(depth + 1);
   const bracketIndent = getBracketIndent(depth);
 
   const lines = Object.entries(value).map(([key, val]) => {
