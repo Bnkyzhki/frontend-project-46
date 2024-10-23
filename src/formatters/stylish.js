@@ -1,5 +1,5 @@
 const getIndent = (depth) => ' '.repeat(depth * 4);
-const getBracketIndent = (depth) => ' '.repeat((depth - 1) * 4);
+const getBracketIndent = (depth) => ' '.repeat(Math.max((depth - 1) * 4, 0));
 
 const stringify = (value, depth) => {
   if (typeof value !== 'object' || value === null) {
@@ -38,7 +38,7 @@ const stylish = (data) => {
       }
     });
 
-    return `{\n${lines.join('\n')}\n${indent.slice(2)}}`;
+    return `{\n${lines.join('\n')}\n${getBracketIndent(depth)}}`;
   };
 
   return iter(data);
