@@ -23,7 +23,7 @@ const stylish = (data) => {
       switch (node.type) {
         case 'added':
           return `${indent}+ ${node.key}: ${stringify(node.value, depth)}`;
-        case 'deleted':
+        case 'removed':
           return `${indent}- ${node.key}: ${stringify(node.value, depth)}`;
         case 'changed':
           return `${indent}- ${node.key}: ${stringify(node.oldValue, depth)}\n${indent}+ ${node.key}: ${stringify(node.newValue, depth)}`;
