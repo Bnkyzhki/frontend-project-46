@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { Command } from 'commander';
-import { compareFiles } from './compare.js';
+import { compareFiles } from './src/index.js';
 
 const program = new Command();
 
@@ -14,17 +14,5 @@ program
     const diff = compareFiles(filepath1, filepath2, options.format);
     console.log(diff);
   });
-
-  program.configureHelp({
-    optionTerm: (option) => option.flags,
-    optionDescription: (option) => {
-      if (option.flags === '-h, --help') {
-        return 'output usage information';
-      }
-      return option.description;
-    }
-  });
-  
-program.allowUnknownOption(true);
 
 program.parse();

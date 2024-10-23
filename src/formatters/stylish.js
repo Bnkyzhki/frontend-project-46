@@ -1,10 +1,13 @@
+const getIndent = (depth) => ' '.repeat(depth * 4);
+const getBracketIndent = (depth) => ' '.repeat((depth - 1) * 4);
+
 const stringify = (value, depth) => {
   if (typeof value !== 'object' || value === null) {
     return String(value);
   }
 
-  const indent = ' '.repeat(depth * 4);
-  const bracketIndent = ' '.repeat((depth - 1) * 4);
+  const indent = getIndent(depth);
+  const bracketIndent = getBracketIndent(depth);
 
   const lines = Object.entries(value).map(([key, val]) => {
     return `${indent}${key}: ${stringify(val, depth + 1)}`;
@@ -15,7 +18,7 @@ const stringify = (value, depth) => {
 
 const stylish = (data) => {
   const iter = (nodes, depth = 0) => {
-    const indent = ' '.repeat(depth * 4);
+    const indent = getIndent(depth);
     const lines = nodes.map((node) => {
       switch (node.type) {
         case 'added':
