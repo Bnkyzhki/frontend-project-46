@@ -24,7 +24,7 @@ const buildDiff = (data1, data2) => {
   });
 };
 
-export const compareFiles = (filepath1, filepath2, format = 'stylish') => {
+  const compareFiles = (filepath1, filepath2, format = 'stylish') => {
   const { content: content1, extension: format1 } = getFileData(filepath1);
   const { content: content2, extension: format2 } = getFileData(filepath2);
 
@@ -35,3 +35,5 @@ export const compareFiles = (filepath1, filepath2, format = 'stylish') => {
   const formatter = getFormatter(format);
   return formatter(diff);
 };
+
+export default compareFiles;
