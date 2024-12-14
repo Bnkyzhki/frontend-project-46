@@ -10,4 +10,3 @@ const getFileData = (filepath) => {
 };
 
 export default getFileData;
- 
