@@ -37,4 +37,3 @@ describe('gendiff', () => {
     expect(result).toEqual(expectedOutput);
   });
 });
-

@@ -12,9 +12,7 @@ const stringify = (value, depth) => {
   const indent = getIndent(depth + 1);
   const bracketIndent = getBracketIndent(depth + 1);
 
-  const lines = Object.entries(value).map(([key, val]) => {
-    return `${indent}  ${key}: ${stringify(val, depth + 1)}`;
-  });
+  const lines = Object.entries(value).map(([key, val]) => `${indent}  ${key}: ${stringify(val, depth + 1)}`);
 
   return `{\n${lines.join('\n')}\n${bracketIndent}  }`;
 };

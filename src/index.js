@@ -18,13 +18,15 @@ const buildDiff = (data1, data2) => {
       return { key, type: 'nested', children: buildDiff(value1, value2) };
     }
     if (!_.isEqual(value1, value2)) {
-      return { key, type: 'changed', oldValue: value1, newValue: value2 };
+      return {
+        key, type: 'changed', oldValue: value1, newValue: value2,
+      };
     }
     return { key, type: 'unchanged', value: value1 };
   });
 };
 
-  const compareFiles = (filepath1, filepath2, format = 'stylish') => {
+const compareFiles = (filepath1, filepath2, format = 'stylish') => {
   const { content: content1, extension: format1 } = getFileData(filepath1);
   const { content: content2, extension: format2 } = getFileData(filepath2);
 
