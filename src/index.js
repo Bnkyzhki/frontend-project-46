@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import parse from './parsers.js';
 import getFormatter from './formatters/formatterSelector.js';
-import { getFileData } from './helpers.js';
+import getFileData from './helpers.js';
 
 const buildDiff = (data1, data2) => {
   const keys = _.sortBy(_.union(Object.keys(data1), Object.keys(data2)));
