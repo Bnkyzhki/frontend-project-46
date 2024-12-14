@@ -39,8 +39,8 @@ const stylish = (data) => {
       }
     });
 
-    const bracketIndent = depth === 1 ? '' : getBracketIndent(depth);
-    return `{\n${lines.join('\n')}\n${bracketIndent}  }`;
+    const bracketIndent = depth === 1 ? '}' :${getBracketIndent(depth)}  };
+    return{\n${lines.join('\n')}\n${bracketIndent};
   };
 
   return iter(data);
